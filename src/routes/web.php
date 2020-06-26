@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+	return view('login');
+})->name('login');
+
+Route::get('/index', function () {
 	return view('index');
-});
+})->middleware('auth');
+
+//Auth::routes();
+
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+Route::apiResource('/game_user', 'GameUserController');
