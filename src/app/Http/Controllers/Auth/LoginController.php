@@ -47,6 +47,17 @@ class LoginController extends Controller
 			{
 				$user = $this->createUserByGoogle($gUser);
 			}
+			else
+			{
+				// social_idで一致確認
+				$user = $logic->getUserSocialId($gUser->getId());
+				// いなければ新規作成
+				if ($user == null)
+				{
+					$user = $this->createUserByGoogle($gUser);
+				}
+			}
+
 			// ログイン
 			Auth::login($user, true);
 

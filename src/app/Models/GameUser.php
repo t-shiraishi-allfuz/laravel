@@ -9,7 +9,7 @@ class GameUser extends BaseModel implements Authenticatable
 {
 	use AuthenticableTrait;
 
-	protected $fillable = ['public_id', 'name', 'email', 'remember_token'];
+	protected $fillable = ['public_id', 'name', 'email', 'social_id', 'remember_token'];
 
 	// 公開IDの文字数
 	const PUBLIC_ID_NUM = 10;
@@ -23,10 +23,17 @@ class GameUser extends BaseModel implements Authenticatable
 		$this->fill([
 			'public_id'      => $public_id,
 			'name'           => $request->name,
-			'email'          => $request->email
+			'email'          => $request->email,
+			'social_id'      => $request->getId(),
 		])->save();
 
 		return $this;
+	}
+
+	// ユーザー検索（social_id）
+	public function getUserSociealId($socieal_id)
+	{
+		return self::where('social_id', $socieal_id)->first();
 	}
 
 	// ユーザー検索（email）
