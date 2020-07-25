@@ -1,0 +1,66 @@
+// 汎用青ボタン
+@mixin common-button($name, $width, $height) {
+	@include bg-img("../images/ui/common/button/blue/#{$name}.png", $width, $height);
+	@include box-sizing(border-box);
+	text-align: center;
+	text-decoration: none;
+	color: $color-white;
+	display: inline-block;
+	&.disable {
+		@include bg-img("../images/ui/common/button/off/#{$name}.png", $width, $height);
+		color: $color-bright-gray;
+	}
+}
+
+// 汎用白ボタン
+@mixin common-white-button($name, $width, $height) {
+	@include bg-img("../images/ui/common/button/white/#{$name}.png", $width, $height);
+	text-align: center;
+	text-decoration: none;
+	color: $color-btntext-blue;
+	display: inline-block;
+	&.disable {
+		@include bg-img("../images/ui/common/button/off/#{$name}.png", $width, $height);
+		color: $color-bright-gray;
+	}
+}
+
+.btn-hex {
+	@include common-button(btn_hexa_w260_h80, 260, 80);
+	padding-top: 9px;
+	font-size: 12px;
+}
+
+.btn-m {
+	@include common-button(btn_w180_h60, 180, 60);
+	padding-top: 5px;
+	font-size: 11px;
+}
+
+.btn-l {
+	@include common-button(btn_w280_h80, 280, 80);
+	padding-top: 9px;
+	font-size: 14px;
+}
+
+.btn-white-hex {
+	@include common-white-button(btn_white_hexa_w260_h80, 260, 80);
+	padding-top: 9px;
+	font-size: 12px;
+}
+
+.btn-white-m {
+	@include common-white-button(btn_white_w180_h60, 180, 60);
+	padding-top: 5px;
+	font-size: 11px;
+}
+
+.btn-white-l {
+	@include common-white-button(btn_white_w280_h80, 280, 80);
+	padding-top: 9px;
+	font-size: 14px;
+}
+
+.on-active {
+	@include transform(scale(0.95, 0.95) translateY(1px));
+}

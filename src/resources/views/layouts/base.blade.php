@@ -6,12 +6,25 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-		<title>Laravel</title>
+		<title>{{ config('app.name', 'Laravel') }}</title>
 	</head>
 	<body>
-		<div id="app">
-			@yield('content')
+		<div class="main">
+			<div id="app-container">
+				<div id="wrapper">
+					<header></header>
+					<div id="contents">
+						<div id="scroller">
+							@yield('content')
+						</div>
+					</div>
+					<footer></footer>
+				</div>
+			</div>
 		</div>
+
+		<script src="{{ mix('js/common.js') }}"></script>
 		<script src="{{ mix('js/app.js') }}"></script>
+		@yield('pageJs')
 	</body>
 </html>

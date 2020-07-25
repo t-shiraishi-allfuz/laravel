@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/**
+ * 画像指定
+ *
+ * $file-path    表示したい画像ファイルパス
+ * $repeat       繰り返し(no-repeat: 繰り返しなし repeat-x: 横方向に繰り返し repeat-y: 縦方向に繰り返し)
+ */
+/**
+ * 単発画像用のmixin
+ *
+ * $file-path    表示したい画像ファイルパス
+ * $width        表示幅の指定(true:書き出す false:書き出さない)
+ * $height       表示高さの指定(true:書き出す false:書き出さない)
+ * $repeat       繰り返し(no-repeat: 繰り返しなし repeat-x: 横方向に繰り返し repeat-y: 縦方向に繰り返し)
+ */

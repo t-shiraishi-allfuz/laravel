@@ -1,8 +1,10 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
+// 共通style
 @import 'variables';
+@import 'mixin';
+@import 'reset';
+@import 'layout';
+@import 'button';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';

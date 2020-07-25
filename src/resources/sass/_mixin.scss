@@ -1,0 +1,54 @@
+/**
+ * 画像指定
+ *
+ * $file-path    表示したい画像ファイルパス
+ * $repeat       繰り返し(no-repeat: 繰り返しなし repeat-x: 横方向に繰り返し repeat-y: 縦方向に繰り返し)
+ */
+@mixin background($file-path, $repeat) {
+	background-image: url($file-path);
+	background-repeat: $repeat;
+	background-position: 50% 50%;
+	@content;
+}
+
+@mixin background-size($xsize, $ysize) {
+	background-size: #{$xsize}px #{$ysize}px;
+	width: #{$xsize}px;
+	height: #{$ysize}px;
+}
+
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 5
+	-moz-box-sizing: $box-model;    // Firefox <= 19
+	box-sizing: $box-model;
+}
+
+
+/**
+ * 単発画像用のmixin
+ *
+ * $file-path    表示したい画像ファイルパス
+ * $width        表示幅の指定(true:書き出す false:書き出さない)
+ * $height       表示高さの指定(true:書き出す false:書き出さない)
+ * $repeat       繰り返し(no-repeat: 繰り返しなし repeat-x: 横方向に繰り返し repeat-y: 縦方向に繰り返し)
+ */
+@mixin bg-img($file-path, $width, $height, $repeat: no-repeat) {
+	$xsize: floor($width * 0.5);
+	$ysize: floor($height * 0.5);
+	@if $width {
+		width: $xsize;
+	}
+	@if $height {
+		height: $ysize;
+	}
+	@include background($file-path, $repeat);
+	@include background-size($xsize, $ysize);
+}
+
+// Browser Prefixes
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+	-moz-transform: $transforms;
+	-ms-transform: $transforms;
+	transform: $transforms;
+}
